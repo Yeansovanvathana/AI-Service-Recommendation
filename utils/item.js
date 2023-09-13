@@ -1,7 +1,7 @@
-export const category = [
+export const Service = [
   {
     id: 1,
-    name: "All",
+    name: "Flot.ai",
   },
   {
     id: 2,
@@ -33,6 +33,18 @@ export const category = [
   },
   {
     id: 9,
+    name: "Bot check",
+  },
+  {
+    id: 10,
+    name: "Bot check",
+  },
+  {
+    id: 11,
+    name: "Bot check",
+  },
+  {
+    id: 12,
     name: "Bot check",
   },
 ];

@@ -1,18 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import { category } from "@/utils/category";
+import { Service } from "@/utils/item";
+import Link from "next/link";
 
 const Card = () => {
   // console.log(category);
   return (
-    <div className="w-full flex justify-center">
-      <div className="grid grid-cols-4 gap-6 place-content-center my-10 px-10 max-w-screen-xl">
-        {category.map((item, idx) => (
-          <div
+    <div className="w-full flex justify-center mt-5">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 place-content-center my-10 px-10 max-w-screen-xl">
+        {Service.map((item, idx) => (
+          <Link
             class="max-w-sm bg-white border border-gray-200 rounded-xl"
             key={item.id}
+            href={`/tool/${item.id}`}
           >
-            <div className="h-42 bg-blue-100 rounded-t-lg">
+            <div className="h-42 bg-gradient-to-b from-blue-100 to-blue-200 rounded-t-lg">
               <div className="px-10 pt-12">
                 <Image
                   width={300}
@@ -28,7 +30,7 @@ const Card = () => {
               <h5 class="text-2xl text-center font-medium truncate max-w-xs">
                 {item.name}
               </h5>
-              <p class="flex justify-center text-gray-500">
+              <p class="text-gray-500 text-sm">
                 Work on every task that we need, CVD 10 10 NA NA, also find the
                 best for customer service
               </p>
@@ -44,7 +46,7 @@ const Card = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
         {/*  */}
       </div>
