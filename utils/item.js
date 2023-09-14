@@ -47,4 +47,28 @@ export const Service = [
     id: 12,
     name: "Bot check",
   },
+  {
+    id: 13,
+    name: "Social meida Assistant",
+  },
+  {
+    id: 14,
+    name: "Story teller",
+  },
+  {
+    id: 15,
+    name: "Bot check",
+  },
+  {
+    id: 16,
+    name: "Bot check",
+  },
+  {
+    id: 17,
+    name: "Bot check",
+  },
+  {
+    id: 18,
+    name: "Bot check",
+  },
 ];

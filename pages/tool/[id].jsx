@@ -3,10 +3,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { category2 } from "@/utils/category";
 import { CalendarIcon } from "@heroicons/react/24/outline";
+import Category from "../component/Layout/Category";
 
 const tool = () => {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>AI Services</title>
         <link rel="icon" href="/logo.png" type="image/x-icon" />
@@ -30,33 +31,21 @@ const tool = () => {
             <div>
               <p className="font-bold text-xl ">Flot.ai</p>
               <div className="max-w-xs">
-                {/* <Category data={category2} bgColor={"bg-white"} /> */}
-                <div className="space-y-3">
-                  {category2.map((tool, idx) => (
-                    <div
-                      className={`border-spacing-1 shadow px-3 py-1 rounded-full inline-block cursor-pointer mr-2  bg-white`}
-                      key={tool.id}
-                    >
-                      <p className="text-xs font-normal text-center">
-                        {tool.name}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                <Category data={category2} bgColor={"bg-white"} />
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <div className="border-2 rounded-lg p-2">
                   <CalendarIcon className="icon" />
                 </div>
                 <div>
-                  <p className="text-sm">Add Date</p>
+                  <p className="text-xs">Add Date</p>
                   <p className="font-bold text-sm">12 12 2022</p>
                 </div>
               </div>
-              <div className="h-8 rounded-xl border-2 bg-blue-400 text-white font-semibold text-sm hover:border-2 flex items-center justify-center">
+              <div className="h-8 rounded-xl border-2 border-blue-500 font-medium text-blue-500 text-sm cursor-pointer flex items-center justify-center transition ease-in-out delay-50  hover:-translate-y-1 hover:scale-105 duration-300">
                 Open Site
               </div>
             </div>
