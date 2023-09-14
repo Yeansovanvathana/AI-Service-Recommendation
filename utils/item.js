@@ -1,7 +1,7 @@
 export const Service = [
   {
     id: 1,
-    name: "Flot.ai",
+    name: "All",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const Service = [
   },
   {
     id: 6,
-    name: "SEO",
+    name: "VidoeEdits",
   },
   {
     id: 7,
@@ -29,46 +29,6 @@ export const Service = [
   },
   {
     id: 8,
-    name: "Story teller",
-  },
-  {
-    id: 9,
-    name: "Bot check",
-  },
-  {
-    id: 10,
-    name: "Bot check",
-  },
-  {
-    id: 11,
-    name: "Bot check",
-  },
-  {
-    id: 12,
-    name: "Bot check",
-  },
-  {
-    id: 13,
-    name: "Social meida Assistant",
-  },
-  {
-    id: 14,
-    name: "Story teller",
-  },
-  {
-    id: 15,
-    name: "Bot check",
-  },
-  {
-    id: 16,
-    name: "Bot check",
-  },
-  {
-    id: 17,
-    name: "Bot check",
-  },
-  {
-    id: 18,
-    name: "Bot check",
+    name: "AI-Chatbot",
   },
 ];
