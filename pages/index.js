@@ -1,5 +1,5 @@
 import TopScreen from "./component/TopScreen";
-import Categories from "./component/Categories";
+import Categories from "./component/Layout/Categories";
 import Card from "./component/Card";
 import Head from "next/head";
 

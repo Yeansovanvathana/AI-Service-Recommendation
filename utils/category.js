@@ -36,3 +36,26 @@ export const category = [
     name: "Bot check",
   },
 ];
+
+export const category2 = [
+  {
+    id: 1,
+    name: "All",
+  },
+  {
+    id: 2,
+    name: "Copywriting",
+  },
+  {
+    id: 3,
+    name: "General writing",
+  },
+  {
+    id: 4,
+    name: "Paragraph",
+  },
+  {
+    id: 5,
+    name: "Prompts",
+  },
+];
