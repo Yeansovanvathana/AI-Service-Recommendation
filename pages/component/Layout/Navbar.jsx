@@ -10,13 +10,11 @@ const Navbar = ({ isTopOfPage }) => {
   return (
     <div>
       <nav
-        className={`z-40 w-full fixed top-2 px-2 py-5${
-          isTopOfPage ? "" : "border-b-[1px] border-gray-400 mt-4"
-        }`}
+        className={`z-40 w-full fixed top-2 px-2 py-5${isTopOfPage ? "" : ""}`}
       >
         <div
           className={`flex items-center justify-between mx-auto max-w-screen-xl px-4 md:px-10 py-2 bg-white rounded-full ${
-            isTopOfPage ? "" : "bg-gray-300"
+            isTopOfPage ? "" : "border-[1px] border-gray-400"
           }`}
         >
           <img
