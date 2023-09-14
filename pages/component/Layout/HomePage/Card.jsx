@@ -12,7 +12,7 @@ const Card = ({ data }) => {
             <Link
               class="max-w-sm bg-white border border-gray-200 rounded-xl"
               key={idx}
-              href={`/tool/${item.name}`}
+              href={`/tool/${item.handle}`}
             >
               <div className="h-42 bg-gradient-to-b from-blue-100 to-blue-200 rounded-t-lg">
                 <div className="px-10 pt-12">

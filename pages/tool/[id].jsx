@@ -13,7 +13,6 @@ import { Prompt } from "@/utils/Prompts";
 import { SocialMediaAssistant } from "@/utils/SocialMediaAssistant";
 import { EmailAssistant } from "@/utils/EmailAssistant";
 import { useRecoilValue } from "recoil";
-// import { activeCategory } from "@/services";
 import { activeCategory } from "@/services";
 
 const tool = () => {
@@ -23,19 +22,20 @@ const tool = () => {
 
   const categoryData = {
     All: All,
-    AiChatbot: AIChatbot,
-    VideoEdit: videoEdit,
-    Copywring: copywriting,
+    AI_Chatbot: AIChatbot,
+    Video_Editing: videoEdit,
+    Copywritng: copywriting,
     Paraphraser: Paraphraser,
-    GeneralWriting: GeneralWriting,
+    General_Writing: GeneralWriting,
     Prompts: Prompt,
-    SocialMediaAssistant: SocialMediaAssistant,
-    EmailAssistant: EmailAssistant,
+    Social_Media_Assistant: SocialMediaAssistant,
+    Email_Assistant: EmailAssistant,
   };
 
   let filterData = [];
+
   if (active && categoryData[active]) {
-    filterData = categoryData[active].filter((item) => item.name === id);
+    filterData = categoryData[active].filter((item) => item.handle === id);
   }
 
   return (
@@ -48,17 +48,17 @@ const tool = () => {
         <div>
           <div className="flex justify-center flex-col items-center w-full bg-gradient-to-b from-blue-100 to-blue-200 pt-40 md:pt-40 py-12 space-y-3 md:space-y-8">
             <h1 className="font-medium md:text-5xl text-2xl">{item.name}</h1>
-            <p className="md:text-xl text-base max-w-2xl text-center font-normal leading-8">
+            <p className="md:text-lg text-sm max-w-2xl text-center font-light leading-6 md:leading-8 px-10">
               {item.description}
             </p>
           </div>
-          <div className="flex justify-center mt-12 flex-col max-w-screen-sm mx-auto z-20">
+          <div className="flex justify-center mt-12 flex-col max-w-screen-sm mx-auto z-20 px-10 md:px-0">
             <div className="flex justify-center items-center">
               <img src={item.image} alt="" className="drop-shadow rounded-md" />
             </div>
 
             <div className="bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
-              <div className="flex items-end justify-between">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between space-y-4 md:space-x-0">
                 <div>
                   <p className="font-bold text-xl ">{item.name}</p>
                   <div className="max-w-xs">
@@ -106,7 +106,7 @@ const tool = () => {
             </div>
 
             <div className="bg-primary-box bg-opacity-50 rounded-lg mt-5 py-5 px-5 md:px-10">
-              <p className="font-light text-sm md:text-base text-primary-blue leading-8">
+              <p className="font-light text-sm md:text-baseleading-6 md:leading-8">
                 {item.description}
               </p>
             </div>

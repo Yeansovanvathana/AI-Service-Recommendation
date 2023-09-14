@@ -6,6 +6,7 @@ export default function Pagination({
   eventsPerPage,
   currentPage,
   onPageChange,
+  maxPagesToShow = 5, // Maximum number of pages to display in the middle
 }) {
   const totalPages = Math.ceil(totalEvents / eventsPerPage);
 
@@ -23,38 +24,113 @@ export default function Pagination({
     onPageChange(page);
   };
 
+  const renderPageButtons = () => {
+    const pages = [];
+
+    // Display page numbers with ellipsis if there are too many pages
+    const halfMax = Math.floor(maxPagesToShow / 2);
+    let startPage = Math.max(currentPage - halfMax, 1);
+    let endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+
+    if (endPage - startPage + 1 < maxPagesToShow) {
+      startPage = Math.max(endPage - maxPagesToShow + 1, 1);
+    }
+
+    if (startPage > 1) {
+      // Add the first page button
+      pages.push(
+        <button
+          key={1}
+          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+            currentPage === 1
+              ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
+              : "text-gray-700"
+          }`}
+          onClick={() => handleClick(1)}
+        >
+          1
+        </button>
+      );
+
+      if (startPage > 2) {
+        // Add ellipsis if there are pages before the displayed pages
+        pages.push(
+          <button
+            key="ellipsis-start"
+            className="border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none text-gray-700"
+            disabled
+          >
+            ...
+          </button>
+        );
+      }
+    }
+
+    for (let page = startPage; page <= endPage; page++) {
+      pages.push(
+        <button
+          key={page}
+          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+            currentPage === page
+              ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
+              : "text-gray-700"
+          }`}
+          onClick={() => handleClick(page)}
+        >
+          {page}
+        </button>
+      );
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        // Add ellipsis if there are pages after the displayed pages
+        pages.push(
+          <button
+            key="ellipsis-end"
+            className="border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none text-gray-700"
+            disabled
+          >
+            ...
+          </button>
+        );
+      }
+
+      // Add the last page button
+      pages.push(
+        <button
+          key={totalPages}
+          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+            currentPage === totalPages
+              ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
+              : "text-gray-700"
+          }`}
+          onClick={() => handleClick(totalPages)}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return pages;
+  };
+
   return (
     <div className="max-w-screen-sm flex justify-center mx-auto mt-10">
       <div className="flex items-center gap-4">
         <button
           className={`border rounded-md px-3 py-2 focus:outline-none ${
-            currentPage === 1 ? "text-gray-400" : "text-blue-500"
+            currentPage === 1 ? "text-gray-300" : "text-gray-900"
           }`}
           onClick={prev}
           disabled={currentPage === 1}
         >
           <ChevronLeftIcon className="icon" />
         </button>
-        <div className="flex items-center gap-2">
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-            (page) => (
-              <button
-                key={page}
-                className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
-                  currentPage === page
-                    ? "bg-blue-500 text-white"
-                    : "text-blue-500"
-                }`}
-                onClick={() => handleClick(page)}
-              >
-                {page}
-              </button>
-            )
-          )}
-        </div>
+        <div className="flex items-center gap-2">{renderPageButtons()}</div>
         <button
           className={`border rounded-md px-3 py-2 focus:outline-none ${
-            currentPage === totalPages ? "text-gray-400" : "text-blue-500"
+            currentPage === totalPages ? "text-gray-300" : "text-gray-900"
           }`}
           onClick={next}
           disabled={currentPage === totalPages}

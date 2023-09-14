@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopScreen from "./TopScreen";
 import Card from "./Card";
 import Paginator from "./Paginator";
@@ -13,169 +13,54 @@ import { SocialMediaAssistant } from "@/utils/SocialMediaAssistant";
 import { EmailAssistant } from "@/utils/EmailAssistant";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { activeCategory } from "@/services";
+import { useRouter } from "next/router";
 
-const HomePage = () => {
-  const [showAll, setShowAll] = useState(true);
-  const [showAIChatbot, setShowAIChatbot] = useState(false);
-  const [showVideoEditing, setShowVideoEditing] = useState(false);
-  const [showCopywriting, setShowCopywriting] = useState(false);
-  const [showParaphraser, setShowParaphraser] = useState(false);
-  const [showGeneralWriting, setShowGeneralWriting] = useState(false);
-  const [showPrompts, setShowPrompts] = useState(false);
-  const [showSocialMediaAssistant, setShowSocialMediaAssistant] =
-    useState(false);
-  const [showEmailAssistant, setShowEmailAssistant] = useState(false);
+const HomePage1 = () => {
   const [currentCategory, setCurrentCategory] = useState("All");
+  const [active, setActive] = useState("All"); // Initialize with "All"
   const [_, setAcitveCategory] = useRecoilState(activeCategory);
-
+  const router = useRouter();
+  const { pathname, query } = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 8;
 
-  const handleShowAll = () => {
-    setShowAll(true);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("All");
-    setAcitveCategory("All");
-    setCurrentPage(1);
-  };
+  useEffect(() => {
+    // Get the category from URL parameters
+    // const { category } = router.query;
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
 
-  const handleShowAIChatbot = () => {
-    setShowAll(false);
-    setShowAIChatbot(true);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("AiChatbot");
-    setAcitveCategory("AiChatbot");
-    setCurrentPage(1);
-  };
+    if (category) {
+      setActive(category);
+      setCurrentCategory(category);
+      setAcitveCategory(category);
+    }
+  }, []);
 
-  const handleShowVideoEditing = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(true);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("VideoEdit");
-    setAcitveCategory("VideoEdit");
-    setCurrentPage(1);
-  };
+  const handleCategoryChange = (category) => {
+    query.category = category;
 
-  const handleShowCopywriting = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(true);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("Copywring");
-    setAcitveCategory("Copywring");
-    setCurrentPage(1);
-  };
+    router.push({
+      pathname,
+      query,
+    });
 
-  const handleShowParaphraser = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(true);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("Paraphraser");
-    setAcitveCategory("Paraphraser");
-    setCurrentPage(1);
-  };
-
-  const handleShowGeneralWriting = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(true);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("GeneralWriting");
-    setAcitveCategory("GeneralWriting");
-    setCurrentPage(1);
-  };
-
-  const handleShowPrompts = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(true);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(false);
-    setCurrentCategory("Prompts");
-    setAcitveCategory("Prompts");
-    setCurrentPage(1);
-  };
-
-  const handleShowSocial = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(true);
-    setShowEmailAssistant(false);
-    setCurrentCategory("SocialMediaAssistant");
-    setAcitveCategory("SocialMediaAssistant");
-    setCurrentPage(1);
-  };
-
-  const handleShowEmail = () => {
-    setShowAll(false);
-    setShowAIChatbot(false);
-    setShowVideoEditing(false);
-    setShowCopywriting(false);
-    setShowParaphraser(false);
-    setShowGeneralWriting(false);
-    setShowPrompts(false);
-    setShowSocialMediaAssistant(false);
-    setShowEmailAssistant(true);
-    setCurrentCategory("EmailAssistant");
-    setAcitveCategory("EmailAssistant");
+    setActive(category);
+    setCurrentCategory(category);
+    setAcitveCategory(category);
     setCurrentPage(1);
   };
 
   const categoryData = {
     All: All,
-    AiChatbot: AIChatbot,
-    VideoEdit: videoEdit,
-    Copywring: copywriting,
+    AI_Chatbot: AIChatbot,
+    Video_Editing: videoEdit,
+    Copywritng: copywriting,
     Paraphraser: Paraphraser,
-    GeneralWriting: GeneralWriting,
+    General_Writing: GeneralWriting,
     Prompts: Prompt,
-    SocialMediaAssistant: SocialMediaAssistant,
-    EmailAssistant: EmailAssistant,
+    Social_Media_Assistant: SocialMediaAssistant,
+    Email_Assistant: EmailAssistant,
   };
 
   const handlePageChange = (pageNumber) => {
@@ -188,7 +73,7 @@ const HomePage = () => {
     indexOfFirstEvent,
     indexOfLastEvent
   );
-  const currentEvent = currentEvents.sort((a, b) => b.id - a.id);
+  // const currentEvent = currentEvents.sort((a, b) => b.id - a.id);
   const totalEvents = categoryData[currentCategory].length;
 
   return (
@@ -200,100 +85,28 @@ const HomePage = () => {
           List of recommended AI Services
         </h1>
         <div className="lg:px-32 w-full flex justify-center mt-8">
-          <div className="space-x-4 space-y-4 text-center">
-            <button
-              onClick={handleShowAll}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showAll ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">All</p>
-            </button>
-            <button
-              onClick={handleShowAIChatbot}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showAIChatbot ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                AI Chatbots
-              </p>
-            </button>
-            <button
-              onClick={handleShowVideoEditing}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showVideoEditing ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Video editing
-              </p>
-            </button>
-            <button
-              onClick={handleShowCopywriting}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showCopywriting ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Copywriting
-              </p>
-            </button>
-            <button
-              onClick={handleShowParaphraser}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showParaphraser ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Paraphraser
-              </p>
-            </button>
-            <button
-              onClick={handleShowGeneralWriting}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showGeneralWriting ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                General writing
-              </p>
-            </button>
-            <button
-              onClick={handleShowPrompts}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showPrompts ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Prompts
-              </p>
-            </button>
-            <button
-              onClick={handleShowSocial}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showSocialMediaAssistant ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Social medie assistant
-              </p>
-            </button>
-            <button
-              onClick={handleShowEmail}
-              className={`bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
-                showEmailAssistant ? "bg-blue-200" : ""
-              }`}
-            >
-              <p className="text-xs md:text-sm font-normal text-center">
-                Email assistant
-              </p>
-            </button>
+          <div className="md:space-x-4 space-y-4 md:text-center">
+            {Object.keys(categoryData).map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                className={`mr-2 md:mr-0 bg-primary-50 border-spacing-1 shadow px-3 py-1 md:px-5 md:py-1.5 rounded-full inline-block cursor-pointer ${
+                  active === category
+                    ? "bg-gradient-to-b from-blue-100 to-blue-200"
+                    : ""
+                }`}
+              >
+                <p className="text-xs md:text-sm font-normal text-center">
+                  {category.replace(/_/g, " ")}{" "}
+                  {/* Replace underscores with spaces */}
+                </p>
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
-      <Card data={currentEvent} />
+      <Card data={currentEvents} />
 
       <Paginator
         totalEvents={totalEvents}
@@ -305,5 +118,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
-// data = { currentEvent };
+export default HomePage1;
