@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { Service } from "@/utils/item";
 import Link from "next/link";
+import Category from "./Category";
+import { category2 } from "@/utils/category";
 
 const Card = () => {
   // console.log(category);
@@ -34,17 +36,7 @@ const Card = () => {
                 Work on every task that we need, CVD 10 10 NA NA, also find the
                 best for customer service
               </p>
-              <div className="space-x-2">
-                <div className="bg-gray-200 border-spacing-1 shadow px-4 py-1.5 font-medium rounded-full inline-block cursor-pointer">
-                  <p className="text-xs text-center">hii</p>
-                </div>
-                <div className="bg-gray-200 border-spacing-1 shadow px-5 py-1.5 font-medium rounded-full inline-block cursor-pointer">
-                  <p className="text-xs text-center">vathana</p>
-                </div>
-                <div className="bg-gray-200 border-spacing-1 shadow px-5 py-1.5 font-medium rounded-full inline-block cursor-pointer">
-                  <p className="text-xs text-center">Odvito</p>
-                </div>
-              </div>
+              <Category data={category2} />
             </div>
           </Link>
         ))}
