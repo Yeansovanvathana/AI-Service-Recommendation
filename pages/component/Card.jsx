@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { Service } from "@/utils/item";
 import Link from "next/link";
-import Category from "./Category";
 import { category2 } from "@/utils/category";
 
 const Card = () => {
@@ -36,7 +35,18 @@ const Card = () => {
                 Work on every task that we need, CVD 10 10 NA NA, also find the
                 best for customer service
               </p>
-              <Category data={category2} />
+              <div className="space-y-3">
+                {category2.map((tool, idx) => (
+                  <div
+                    className={`border-spacing-1 shadow px-3 py-1 rounded-full inline-block cursor-pointer mr-2  bg-primary-50`}
+                    key={tool.id}
+                  >
+                    <p className="text-xs font-normal text-center">
+                      {tool.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </Link>
         ))}

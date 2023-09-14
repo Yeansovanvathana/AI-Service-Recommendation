@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Category from "../component/Category";
 import { category2 } from "@/utils/category";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
@@ -31,7 +30,19 @@ const tool = () => {
             <div>
               <p className="font-bold text-xl ">Flot.ai</p>
               <div className="max-w-xs">
-                <Category data={category2} bgColor={"bg-white"} />
+                {/* <Category data={category2} bgColor={"bg-white"} /> */}
+                <div className="space-y-3">
+                  {category2.map((tool, idx) => (
+                    <div
+                      className={`border-spacing-1 shadow px-3 py-1 rounded-full inline-block cursor-pointer mr-2  bg-white`}
+                      key={tool.id}
+                    >
+                      <p className="text-xs font-normal text-center">
+                        {tool.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
