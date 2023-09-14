@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import TopScreen from "./TopScreen";
-import Categories from "./Categories";
 import Card from "./Card";
-import { Service } from "@/utils/item";
 import Paginator from "./Paginator";
 import { All } from "@/utils/All";
 import { AIChatbot } from "@/utils/AIChatbot";
