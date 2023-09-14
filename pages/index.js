@@ -1,7 +1,5 @@
-import TopScreen from "./component/TopScreen";
-import Categories from "./component/Layout/Categories";
-import Card from "./component/Card";
 import Head from "next/head";
+import HomePage from "./component/Layout/HomePage/HomePage";
 
 export default function Home() {
   return (
@@ -11,11 +9,7 @@ export default function Home() {
         <link rel="icon" href="/logo.png" type="image/x-icon" />
       </Head>
 
-      <TopScreen />
-
-      <Categories />
-
-      <Card />
+      <HomePage />
     </main>
   );
 }

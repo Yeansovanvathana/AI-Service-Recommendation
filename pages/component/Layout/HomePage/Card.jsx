@@ -4,12 +4,12 @@ import { Service } from "@/utils/item";
 import Link from "next/link";
 import { category2 } from "@/utils/category";
 
-const Card = () => {
+const Card = ({ data }) => {
   // console.log(category);
   return (
     <div className="w-full flex justify-center mt-5">
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 place-content-center my-10 px-10 max-w-screen-xl">
-        {Service.map((item, idx) => (
+        {data.map((item, idx) => (
           <Link
             class="max-w-sm bg-white border border-gray-200 rounded-xl"
             key={item.id}
