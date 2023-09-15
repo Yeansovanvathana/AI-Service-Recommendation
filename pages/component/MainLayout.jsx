@@ -7,6 +7,7 @@ function MainLayout({ children }) {
   const router = useRouter();
   const isToolPage = router.pathname === "/tool";
   const [isTopOfPage, setIsTopOfPage] = useState(true);
+  let active = false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +22,7 @@ function MainLayout({ children }) {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Navbar isTopOfPage={isTopOfPage} />
+        <Navbar isTopOfPage={isTopOfPage} buttonActive={active} />
         <div className="flex-grow">
           <div className="h-full">{children}</div>
         </div>
