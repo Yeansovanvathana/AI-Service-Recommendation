@@ -65,6 +65,9 @@ const HomePage = () => {
     setCurrentCategory(category);
     setAcitveCategory(category);
     setCurrentPage(1);
+
+    setSearchResults([]);
+    setSearchQuery("");
   };
 
   const categoryData = {
