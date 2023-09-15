@@ -35,7 +35,8 @@ const Navbar = ({ isTopOfPage, onSearch, buttonActive }) => {
               src="/logo.png"
               className="w-16 md:w-18 cursor-pointer lg:text-2xl"
             />
-            <p className="uppercase font-medium md:text-xl mt-3 text-gray-600">
+
+            <p className="uppercase hidden md:flex font-medium md:text-xl mt-3 text-gray-600">
               Bird Initiative
             </p>
           </div>
