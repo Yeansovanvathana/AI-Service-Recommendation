@@ -5,8 +5,8 @@ import Category from "../Category";
 
 const Card = ({ data }) => {
   return (
-    <div className="w-full flex justify-center mt-5">
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 place-content-center my-10 px-10 max-w-screen-xl">
+    <div className="flex justify-center md:mt-5 px-10">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 place-content-center my-10 max-w-screen-xl">
         {data &&
           data.map((item, idx) => (
             <Link

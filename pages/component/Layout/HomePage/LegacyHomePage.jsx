@@ -307,4 +307,3 @@ const LegecyHomePage = () => {
 };
 
 export default LegecyHomePage;
-// data = { currentEvent };

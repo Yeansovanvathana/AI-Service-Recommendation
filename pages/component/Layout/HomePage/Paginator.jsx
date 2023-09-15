@@ -41,10 +41,10 @@ export default function Pagination({
       pages.push(
         <button
           key={1}
-          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+          className={`border rounded-full w-8 h-8 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center focus:outline-none ${
             currentPage === 1
               ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
-              : "text-gray-700"
+              : "text-gray-800"
           }`}
           onClick={() => handleClick(1)}
         >
@@ -57,7 +57,7 @@ export default function Pagination({
         pages.push(
           <button
             key="ellipsis-start"
-            className="border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none text-gray-700"
+            className="border rounded-full w-8 h-8 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center focus:outline-none text-gray-800"
             disabled
           >
             ...
@@ -70,10 +70,10 @@ export default function Pagination({
       pages.push(
         <button
           key={page}
-          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+          className={`border rounded-full w-8 h-8 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center focus:outline-none ${
             currentPage === page
               ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
-              : "text-gray-700"
+              : "text-gray-800"
           }`}
           onClick={() => handleClick(page)}
         >
@@ -88,7 +88,7 @@ export default function Pagination({
         pages.push(
           <button
             key="ellipsis-end"
-            className="border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none text-gray-700"
+            className="border rounded-full w-8 h-7 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center focus:outline-none text-gray-700"
             disabled
           >
             ...
@@ -100,7 +100,7 @@ export default function Pagination({
       pages.push(
         <button
           key={totalPages}
-          className={`border rounded-full w-10 h-10 flex items-center justify-center focus:outline-none ${
+          className={`border rounded-full w-7 h-7 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center focus:outline-none ${
             currentPage === totalPages
               ? "bg-gradient-to-b from-blue-100 to-blue-200 text-gray-600 font-bold"
               : "text-gray-700"
@@ -117,9 +117,9 @@ export default function Pagination({
 
   return (
     <div className="max-w-screen-sm flex justify-center mx-auto mt-10">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         <button
-          className={`border rounded-md px-3 py-2 focus:outline-none ${
+          className={`border rounded-md p-1 md:px-3 md:py-2 focus:outline-none ${
             currentPage === 1 ? "text-gray-300" : "text-gray-900"
           }`}
           onClick={prev}
@@ -127,9 +127,11 @@ export default function Pagination({
         >
           <ChevronLeftIcon className="icon" />
         </button>
-        <div className="flex items-center gap-2">{renderPageButtons()}</div>
+        <div className="flex items-center gap-1 md:gap-2">
+          {renderPageButtons()}
+        </div>
         <button
-          className={`border rounded-md px-3 py-2 focus:outline-none ${
+          className={`border rounded-md p-1 md:px-3 md:py-2 focus:outline-none ${
             currentPage === totalPages ? "text-gray-300" : "text-gray-900"
           }`}
           onClick={next}

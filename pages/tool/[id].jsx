@@ -41,7 +41,7 @@ const tool = () => {
   return (
     <div>
       <Head>
-        <title>AI Services</title>
+        <title>AI Recommender Hub</title>
         <link rel="icon" href="/logo.png" type="image/x-icon" />
       </Head>
       {filterData.map((item, idx) => (
@@ -118,6 +118,3 @@ const tool = () => {
 };
 
 export default tool;
-// {filterData && filterData.map((item, idx) = (
-
-//   ))}
