@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 function MainLayout({ children }) {
   const router = useRouter();
-  const isToolPage = router.pathname === "/tool";
   const [isTopOfPage, setIsTopOfPage] = useState(true);
   let active = false;
 

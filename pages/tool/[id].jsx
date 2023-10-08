@@ -14,6 +14,7 @@ import { SocialMediaAssistant } from "@/utils/SocialMediaAssistant";
 import { EmailAssistant } from "@/utils/EmailAssistant";
 import { useRecoilValue } from "recoil";
 import { activeCategory } from "@/services";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 const tool = () => {
   const router = useRouter();
@@ -38,17 +39,30 @@ const tool = () => {
     filterData = categoryData[active].filter((item) => item.handle === id);
   }
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <div>
       <Head>
         <title>AI Recommender Hub</title>
         <link rel="icon" href="/logo.png" type="image/x-icon" />
       </Head>
+
       {filterData.map((item, idx) => (
         <div>
-          <div className="flex justify-center flex-col items-center w-full bg-gradient-to-b from-blue-100 to-blue-200 pt-40 md:pt-40 py-12 space-y-3 md:space-y-8">
-            <h1 className="font-medium md:text-5xl text-2xl">{item.name}</h1>
-            <p className="md:text-lg text-sm max-w-2xl text-center font-light leading-6 md:leading-8 px-10">
+          <div className="flex justify-center flex-col items-center w-full bg-gradient-to-b from-blue-100 to-blue-200 pt-36 md:pt-40 py-12">
+            <div className="flex justify-between w-full max-w-screen-xl px-8 md:px-15">
+              <button onClick={handleBack}>
+                <ChevronLeftIcon className="h-7 w-7 text-gray-800" />
+              </button>
+              <p className="hidden"></p>
+            </div>
+            <h1 className="font-medium md:text-5xl text-2xl my-3 md:my-5">
+              {item.name}
+            </h1>
+            <p className="md:text-lg text-sm max-w-2xl text-center font-light leading-6 md:leading-8 px-10 md:mb-5 md:my-2">
               {item.description}
             </p>
           </div>
