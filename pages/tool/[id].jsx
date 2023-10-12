@@ -54,7 +54,10 @@ const tool = () => {
         <div>
           <div className="flex justify-center flex-col items-center w-full bg-gradient-to-b from-blue-100 to-blue-200 pt-36 md:pt-40 py-12">
             <div className="flex justify-between w-full max-w-screen-xl px-8 md:px-15">
-              <button onClick={handleBack}>
+              <button
+                onClick={handleBack}
+                className="bg-white rounded-full h-10 w-10 flex justify-center items-center opacity-80 hover:opacity-100"
+              >
                 <ChevronLeftIcon className="h-7 w-7 text-gray-800" />
               </button>
               <p className="hidden"></p>
